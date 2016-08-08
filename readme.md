@@ -1,3 +1,12 @@
+Live
+==
+https://rawgit.com/daniel-sc/gravizo_editor/master/
+
+Stack
+==
+- Angular2
+- http://www.gravizo.com/
+
 TODO
 ==
 - state as url query
