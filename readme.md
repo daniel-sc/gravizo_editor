@@ -9,7 +9,8 @@ Stack
 
 TODO
 ==
-- state as url query
+- ~~state as url query~~
+  - enable/disable state as url query
 - enable/disable auto convert
 - ~~reactive~~
 - changed indicator reset when image loaded

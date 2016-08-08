@@ -30,6 +30,10 @@ System.config({
       main: 'bundles/common.umd.js',
       defaultExtension: 'js'
     },
+    '@angular/router': {
+      main: 'bundles/router.umd.js',
+      defaultExtension: 'js'
+    },
     '@angular/rxjs': {
       main: 'bundles/Rx.umd.js',
       defaultExtension: 'js'

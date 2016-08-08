@@ -1,0 +1,9 @@
+<textarea [ngFormControl]="graphBox" [(ngModel)]="graphDescription" spellcheck="false" cols="50" rows="10"> </textarea>
+<br/>
+<a class="btn btn-default" href='#' (click)="downloadDescription()">Download graph description</a>
+<a class="btn btn-default" [href]="imageUrl" download="graph.png">Download graph image</a>
+<br/>
+<p class="label" [class.label-warning]="changed" [class.label-default]="!changed">
+    Synced: {{ !changed }}</p>
+<br/>
+<img [src]="imageUrl" alt="graph loading.."/>
