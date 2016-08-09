@@ -1,6 +1,7 @@
 Live
 ==
-https://rawgit.com/daniel-sc/gravizo_editor/master/
+https://daniel-sc.github.io/gravizo_editor/
+(might not work with mobile yet..)
 
 Stack
 ==
@@ -11,6 +12,7 @@ TODO
 ==
 - ~~state as url query~~
   - enable/disable state as url query
+  - don't mess with state on graph download
 - enable/disable auto convert
 - ~~reactive~~
 - changed indicator reset when image loaded
