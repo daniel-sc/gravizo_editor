@@ -1,2 +1,4 @@
 /* Styles go here */
-
+textarea {
+    font-family: monospace !important;
+}

@@ -14,7 +14,7 @@ TODO
   - ~~don't mess with state on graph download~~
 - enable/disable auto convert
 - ~~reactive~~
-- changed indicator reset when image loaded
+- ~~changed indicator reset when image loaded~~
 - better editor
 - ~~styling~~
 - ~~auto semicolon~~
