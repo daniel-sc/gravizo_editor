@@ -5,6 +5,6 @@ import {Graph} from './graph';
 import {provideRouter} from '@angular/router';
 
 bootstrap(App, [provideRouter([{
-    path: '**',
+    path: '',
     component: Graph
 }])]).catch(err => console.error(err));

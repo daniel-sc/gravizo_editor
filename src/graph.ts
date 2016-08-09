@@ -5,8 +5,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/do';
 
-import 'filesaver';
-
+declare var saveAs:any
 
 @Component({
   selector: 'my-graph',
@@ -14,7 +13,9 @@ import 'filesaver';
   templateUrl: 'src/graph.html',
   directives: [FORM_DIRECTIVES]
 })
-export class Graph {
+export class Graph /*implements OnInit*/ {
+
+  //@ViewChild('graphImage') input: ElementRef;
   
   public baseUrl:string = 'https://g.gravizo.com/g?';
   public graphDescription:string = `digraph G {
@@ -49,10 +50,18 @@ export class Graph {
 
         });
   }
+
+  invokeChanged() {
+      console.log("graph changed!");
+  }
+
+    ngOnInit() {
+    console.log('graph ngOnInit');
+    }
   
   downloadDescription() {
     var blob = new Blob([this.graphDescription], {type : 'text/text', endings: 'native'});
-    saveAs(blob, 'graph.txt');
+      saveAs(blob, 'graph.txt');
   }
   
   

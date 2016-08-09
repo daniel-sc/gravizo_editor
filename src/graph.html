@@ -1,10 +1,16 @@
-<textarea [ngFormControl]="graphBox" [(ngModel)]="graphDescription" spellcheck="false" cols="50" rows="10"> </textarea>
+<textarea title="Graph description" [ngFormControl]="graphBox" [(ngModel)]="graphDescription"
+          spellcheck="false" autocomplete="off" cols="50" rows="10"> </textarea>
 <br/>
-<!-- TODO prevent location change on description download -->
-<a class="btn btn-default" href='#' (click)="downloadDescription()">Download graph description</a>
+<a class="btn btn-default" href='javascript:void(0)' (click)="downloadDescription()">Download graph description</a>
 <a class="btn btn-default" [href]="imageUrl" download="graph.png">Download graph image</a>
 <br/>
 <p class="label" [class.label-warning]="changed" [class.label-default]="!changed">
     Synced: {{ !changed }}</p>
 <br/>
-<img [src]="imageUrl" alt="graph loading.."/>
+<!--<my-graph-image [src]="imageUrl" (loading)="invokeChanged()"/>-->
+<img #graphImage
+     (change)="invokeChanged()"
+     (onChanges)="invokeChanged()"
+     (onChange)="invokeChanged()"
+     (ngOnChange)="invokeChanged()"
+     [src]="imageUrl" alt="graph loading.."/>

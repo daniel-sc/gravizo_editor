@@ -1,6 +1,6 @@
 System.config({
   //use typescript for compilation
-  transpiler: 'typescript',
+  //transpiler: 'typescript',
   //typescript compiler options
   typescriptOptions: {
     emitDecoratorMetadata: true
@@ -8,15 +8,14 @@ System.config({
   //map tells the System loader where to look for things
   map: {
     app: "./src",
-    '@angular': 'https://npmcdn.com/@angular',
-    'rxjs': 'https://npmcdn.com/rxjs@5.0.0-beta.6',
-    'filesaver': 'https://rawgit.com/eligrey/FileSaver.js/master/FileSaver.js'
+    '@angular': 'node_modules/@angular',
+    'rxjs': 'node_modules/rxjs'
   },
   //packages defines our app package
   packages: {
     app: {
-      main: './main.ts',
-      defaultExtension: 'ts'
+      main: './main.js',
+      defaultExtension: 'js'
     },
     '@angular/core': {
       main: 'bundles/core.umd.js',
