@@ -37,7 +37,7 @@ export class Graph implements OnInit {
   constructor(location:Location, private renderer: Renderer) {
 
     if (location.path(true)) {
-      this.graphDescription = decodeURIComponent(location.path(true).substr(2));
+      this.graphDescription = decodeURIComponent(location.path(true).substr(4));
     }
     
     this.graphBox
@@ -48,7 +48,7 @@ export class Graph implements OnInit {
           this.imageUrl = this.baseUrl + event.replace(new RegExp("([^;\n])(\n+)", "g"), "$1;$2");
           this.changed = false;
           this.loading = true;
-          location.replaceState('/', encodeURIComponent(event));
+          location.replaceState('/', 'g=' + encodeURIComponent(event));
 
         });
   }
