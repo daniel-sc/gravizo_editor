@@ -8,8 +8,8 @@ System.config({
   //map tells the System loader where to look for things
   map: {
     app: "./src",
-    '@angular': 'https://npmcdn.com/@angular',
-    'rxjs': 'https://npmcdn.com/rxjs@5.0.0-beta.6',
+    '@angular': 'https://unpkg.com/@angular',
+    'rxjs': 'https://unpkg.com/rxjs@5.0.0-beta.6',
   },
   //packages defines our app package
   packages: {
