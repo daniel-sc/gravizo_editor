@@ -8,7 +8,7 @@ import 'rxjs/add/operator/do';
 declare var saveAs:any
 
 @Component({
-  selector: 'my-graph',
+  selector: 'my-app',
   providers: [],
   templateUrl: 'src/graph.html',
   directives: [FORM_DIRECTIVES]
