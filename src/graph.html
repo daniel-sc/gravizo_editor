@@ -5,7 +5,7 @@
   </div>
           
   <div class="panel-body">
-    <textarea title="Graph description" [ngFormControl]="graphBox" [(ngModel)]="graphDescription"
+    <textarea title="Graph description" [formControl]="graphBox" [(ngModel)]="graphDescription"
           spellcheck="false" autocomplete="off" cols="50" rows="10"> </textarea>
     <br/>
     <a class="btn btn-default" href='javascript:void(0)' (click)="downloadDescription()">Download graph description</a>
