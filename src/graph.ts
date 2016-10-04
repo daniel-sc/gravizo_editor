@@ -2,6 +2,7 @@
 
 import {Location, Control, FORM_DIRECTIVES} from '@angular/common';
 import {Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, Renderer} from '@angular/core';
+import { FormsModule, FormControl }   from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/do';
 
@@ -30,7 +31,7 @@ export class Graph implements OnInit {
    }`;
    public imageUrl:string = this.baseUrl + this.graphDescription;
    
-  private graphBox:Control = new Control();
+  private graphBox:FormControl = new FormControl();
   public changed:boolean = false;
   public loading:boolean = false;
   
