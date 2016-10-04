@@ -1,17 +1,4 @@
 System.config({
-  //use typescript for compilation
-  //transpiler: 'typescript'
-  transpiler: 'ts',
-  //typescript compiler options
-  typescriptOptions: {
-    tsconfig: true,
-    emitDecoratorMetadata: true
-  },
-  meta: {
-    'typescript': {
-      "exports": "ts"
-    }
-  },
   paths: {
     // paths serve as alias
     'npm:': 'node_modules/'
