@@ -14,7 +14,7 @@ System.config({
   },
   paths: {
     // paths serve as alias
-    'npm:': 'https://unpkg.com/'
+    'npm:': 'node_modules/'
   },
   //map tells the System loader where to look for things
   map: {
@@ -38,8 +38,8 @@ System.config({
   //packages defines our app package
   packages: {
     app: {
-      main: './main.ts',
-      defaultExtension: 'ts'
+      main: './main.js',
+      defaultExtension: 'js'
     },
     rxjs: {
       defaultExtension: 'js'
