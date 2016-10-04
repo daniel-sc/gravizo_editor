@@ -1,10 +1,22 @@
-<textarea title="Graph description" [ngFormControl]="graphBox" [(ngModel)]="graphDescription"
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Supports all formats as described on <a href="http://www.gravizo.com/">gravizo.com</a>. Semicolons are automatically added.
+  </div>
+          
+  <div class="panel-body">
+    <textarea title="Graph description" [ngFormControl]="graphBox" [(ngModel)]="graphDescription"
           spellcheck="false" autocomplete="off" cols="50" rows="10"> </textarea>
-<br/>
-<a class="btn btn-default" href='javascript:void(0)' (click)="downloadDescription()">Download graph description</a>
-<a class="btn btn-default" [href]="imageUrl" download="graph.png">Download graph image</a>
-<br/>
-<p class="label" [class.label-warning]="changed || loading" [class.label-default]="!changed && !loading">
-    Synced: {{ !changed && !loading }}</p>
-<br/>
-<img #graphImage [src]="imageUrl" alt="graph loading.."/>
+    <br/>
+    <a class="btn btn-default" href='javascript:void(0)' (click)="downloadDescription()">Download graph description</a>
+    <a class="btn btn-default" [href]="imageUrl" download="graph.png">Download graph image</a>
+    <br/>
+    <p class="label" [class.label-warning]="changed || loading" [class.label-default]="!changed && !loading">
+        Synced: {{ !changed && !loading }}</p>
+    <br/>
+    <img #graphImage [src]="imageUrl" alt="graph loading.."/>
+      
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
