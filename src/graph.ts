@@ -18,7 +18,7 @@ export class Graph implements OnInit {
 
   @ViewChild('graphImage') imageElement: ElementRef;
   
-  public baseUrl:string = 'https://g.gravizo.com/g?';
+  public baseUrl:string = 'https://g.gravizo.com/svg?';
   public graphDescription:string = `digraph G {
      main -> parse -> execute;
      main -> init;
