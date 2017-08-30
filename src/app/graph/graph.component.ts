@@ -1,10 +1,11 @@
 //our graph component
 
 import {Location} from '@angular/common';
-import {Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, Renderer} from '@angular/core';
-import { FormsModule, FormControl}   from '@angular/forms';
+import {Component, ElementRef, OnInit, Renderer, ViewChild} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/do';
+import { saveAs } from 'file-saver'
 
 declare var saveAs:any
 
@@ -30,14 +31,14 @@ export class Graph implements OnInit {
    }`;
     public imageUrl:string = this.baseUrl + this.graphDescription;
 
-    private graphBox:FormControl = new FormControl();
+    public graphBox:FormControl = new FormControl();
     public changed:boolean = false;
     public loading:boolean = false;
 
     constructor(location:Location, private renderer: Renderer) {
 
         if (location.path(true)) {
-            this.graphDescription = decodeURIComponent(location.path(true).substr(4));
+            this.graphDescription = decodeURIComponent(location.path(true).substr(3));
         }
 
         this.graphBox
