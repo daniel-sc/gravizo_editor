@@ -4,6 +4,7 @@ import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/do';
 import {saveAs} from 'file-saver'
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 declare let saveAs: any;
 
@@ -17,6 +18,9 @@ export class Graph implements OnInit {
 
     @ViewChild('graphImage') imageElement: ElementRef;
     staticAlertClosed = false;
+    showLoad = false;
+    loadUrl: string;
+    originalSize = false;
 
     public baseUrl: string = 'https://g.gravizo.com/';
     private _fileType = 'svg';
@@ -36,7 +40,7 @@ export class Graph implements OnInit {
     public changed: boolean = false;
     public loading: boolean = false;
 
-    constructor(location: Location, private renderer: Renderer2) {
+    constructor(location: Location, private renderer: Renderer2, private modalService: NgbModal) {
 
         if (location.path(true)) {
             this.graphDescription = decodeURIComponent(location.path(true).substr(3));
@@ -69,6 +73,13 @@ export class Graph implements OnInit {
 
     get fileType() {
         return this._fileType;
+    }
+
+    load() {
+        let query = this.loadUrl.split('?')[1];
+        this.graphDescription = decodeURIComponent(query).replace(new RegExp(';', 'g'), '\n');
+        this.showLoad = false;
+        this.loadUrl = null;
     }
 
     ngOnInit() {

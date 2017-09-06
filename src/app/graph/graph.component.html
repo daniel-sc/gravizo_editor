@@ -12,23 +12,36 @@
 
             <form class="form-inline">
                 <a class="btn btn-outline-primary" href='javascript:void(0)' (click)="downloadDescription()">
-                    Download graph description
+                    <span class="fa fa-download"></span>
+                    Description
                 </a>
                 <a class="btn btn-outline-primary" [href]="imageUrl" download="graph.png">
-                    Download graph image
+                    <span class="fa fa-download"></span>
+                    Image
                 </a>
                 <select name="fileType" class="custom-select" [(ngModel)]="fileType">
-                    <option value="svg">svg</option>
-                    <option value="g">png</option>
+                    <option value="svg">SVG</option>
+                    <option value="g">PNG</option>
                 </select>
+
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="originalSize" [(ngModel)]="originalSize" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Original size</span>
+                </label>
+
+                <input *ngIf="showLoad" class="form-control" [(ngModel)]="loadUrl" name="imageUrl" type="text"
+                       placeholder="input image url..">
+                <button *ngIf="showLoad" class="btn btn-primary" (click)="load()">Ok</button>
+                <button *ngIf="showLoad" class="btn btn-outline-primary" (click)="showLoad=false">Cancel</button>
+                <button *ngIf="!showLoad" class="btn btn-outline-primary" (click)="showLoad=true">Load..</button>
             </form>
-            <p class="badge" [class.badge-danger]="changed || loading" [class.badge-primary]="!changed && !loading">
-                Synced: {{ !changed && !loading }}</p>
-            <br/>
         </div>
 
         <div class="col">
-            <img #graphImage [src]="imageUrl" alt="graph loading.."/>
+            <span class="loading-indicator badge" [class.badge-danger]="changed || loading" [class.badge-primary]="!changed && !loading">
+                Synced: {{ !changed && !loading }}</span>
+            <img #graphImage [src]="imageUrl" [class.w-100]="!originalSize" alt="graph loading.."/>
         </div>
     </div>
 </div>
