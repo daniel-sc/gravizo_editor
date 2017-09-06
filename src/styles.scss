@@ -1,0 +1,8 @@
+/* Styles go here */
+@import "variables";
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+textarea {
+  font-family: monospace !important;
+}

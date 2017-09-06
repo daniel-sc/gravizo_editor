@@ -17,6 +17,7 @@ declare var saveAs:any
 export class Graph implements OnInit {
 
     @ViewChild('graphImage') imageElement: ElementRef;
+    staticAlertClosed = false;
 
     public baseUrl:string = 'https://g.gravizo.com/svg?';
     public graphDescription:string = `digraph G {
@@ -60,6 +61,7 @@ export class Graph implements OnInit {
         this.renderer.listen(this.imageElement.nativeElement, 'load', function (event) {
             graphComponent.loading = false;
         });
+        setTimeout(() => this.staticAlertClosed = true, 10000);
     }
 
     downloadDescription() {
