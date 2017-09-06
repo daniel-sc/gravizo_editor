@@ -1,26 +1,26 @@
-//our graph component
-
 import {Location} from '@angular/common';
-import {Component, ElementRef, OnInit, Renderer, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/do';
-import { saveAs } from 'file-saver'
+import {saveAs} from 'file-saver'
 
-declare var saveAs:any
+declare let saveAs: any;
 
 @Component({
     selector: 'my-app',
     providers: [],
-    templateUrl: 'graph.component.html'
+    templateUrl: 'graph.component.html',
+    styleUrls: ['./graph.component.scss']
 })
 export class Graph implements OnInit {
 
     @ViewChild('graphImage') imageElement: ElementRef;
     staticAlertClosed = false;
 
-    public baseUrl:string = 'https://g.gravizo.com/svg?';
-    public graphDescription:string = `digraph G {
+    public baseUrl: string = 'https://g.gravizo.com/';
+    private _fileType = 'svg';
+    public graphDescription: string = `digraph G {
      main -> parse -> execute;
      main -> init;
      main -> cleanup;
@@ -30,13 +30,13 @@ export class Graph implements OnInit {
      main -> printf;
      execute -> compare;
    }`;
-    public imageUrl:string = this.baseUrl + this.graphDescription;
+    public imageUrl: string;
 
-    public graphBox:FormControl = new FormControl();
-    public changed:boolean = false;
-    public loading:boolean = false;
+    public graphBox: FormControl = new FormControl();
+    public changed: boolean = false;
+    public loading: boolean = false;
 
-    constructor(location:Location, private renderer: Renderer) {
+    constructor(location: Location, private renderer: Renderer2) {
 
         if (location.path(true)) {
             this.graphDescription = decodeURIComponent(location.path(true).substr(3));
@@ -47,25 +47,42 @@ export class Graph implements OnInit {
             .do((e) => this.changed = true)
             .debounceTime(500)
             .subscribe((event) => {
-                this.imageUrl = this.baseUrl + event.replace(new RegExp("([^;\n])(\n+)", "g"), "$1;$2");
+                this.updateImageUrl();
                 this.changed = false;
-                this.loading = true;
                 location.replaceState('/', 'g=' + encodeURIComponent(event));
-
             });
+    }
+
+    private updateImageUrl() {
+        let oldUrl = this.imageUrl;
+        this.imageUrl = this.baseUrl
+            + this.fileType
+            + '?'
+            + this.graphDescription.replace(new RegExp("([^;\n])(\n+)", "g"), "$1;$2");
+        this.loading = oldUrl != this.imageUrl;
+    }
+
+    set fileType(fileType: string) {
+        this._fileType = fileType;
+        this.updateImageUrl();
+    }
+
+    get fileType() {
+        return this._fileType;
     }
 
     ngOnInit() {
         console.log('initializing loading listener..');
-        var graphComponent = this;
-        this.renderer.listen(this.imageElement.nativeElement, 'load', function (event) {
+        let graphComponent = this;
+        this.renderer.listen(this.imageElement.nativeElement, 'load', function () {
             graphComponent.loading = false;
         });
         setTimeout(() => this.staticAlertClosed = true, 10000);
+        this.updateImageUrl();
     }
 
     downloadDescription() {
-        var blob = new Blob([this.graphDescription], {type : 'text/text', endings: 'native'});
+        let blob = new Blob([this.graphDescription], {type: 'text/text', endings: 'native'});
         saveAs(blob, 'graph.txt');
     }
 

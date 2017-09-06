@@ -9,20 +9,25 @@
             <textarea title="Graph description" [formControl]="graphBox" [(ngModel)]="graphDescription"
                       spellcheck="false" autocomplete="off" class="w-100" rows="10"> </textarea>
             <br>
-            <a class="btn btn-outline-primary" href='javascript:void(0)' (click)="downloadDescription()">
-                Download graph description
-            </a>
-            <a class="btn btn-outline-primary" [href]="imageUrl" download="graph.png">
-                Download graph image
-            </a>
-            <br/>
+
+            <form class="form-inline">
+                <a class="btn btn-outline-primary" href='javascript:void(0)' (click)="downloadDescription()">
+                    Download graph description
+                </a>
+                <a class="btn btn-outline-primary" [href]="imageUrl" download="graph.png">
+                    Download graph image
+                </a>
+                <select name="fileType" class="custom-select" [(ngModel)]="fileType">
+                    <option value="svg">svg</option>
+                    <option value="g">png</option>
+                </select>
+            </form>
             <p class="badge" [class.badge-danger]="changed || loading" [class.badge-primary]="!changed && !loading">
                 Synced: {{ !changed && !loading }}</p>
             <br/>
         </div>
 
         <div class="col">
-
             <img #graphImage [src]="imageUrl" alt="graph loading.."/>
         </div>
     </div>
