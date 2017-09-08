@@ -31,10 +31,10 @@
                 </label>
 
                 <input *ngIf="showLoad" class="form-control" [(ngModel)]="loadUrl" name="imageUrl" type="text"
-                       placeholder="input image url..">
+                       placeholder="input image url.." #urlInput>
                 <button *ngIf="showLoad" class="btn btn-primary" (click)="load()">Ok</button>
-                <button *ngIf="showLoad" class="btn btn-outline-primary" (click)="showLoad=false">Cancel</button>
-                <button *ngIf="!showLoad" class="btn btn-outline-primary" (click)="showLoad=true">Load..</button>
+                <button *ngIf="showLoad" class="btn btn-outline-primary" (click)="showLoadUrl(false)">Cancel</button>
+                <button *ngIf="!showLoad" class="btn btn-outline-primary" (click)="showLoadUrl(true)">Load..</button>
             </form>
         </div>
 

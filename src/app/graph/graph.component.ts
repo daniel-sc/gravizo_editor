@@ -17,6 +17,7 @@ declare let saveAs: any;
 export class Graph implements OnInit {
 
     @ViewChild('graphImage') imageElement: ElementRef;
+    @ViewChild('urlInput') urlInputElement: ElementRef;
     staticAlertClosed = false;
     showLoad = false;
     loadUrl: string;
@@ -71,6 +72,17 @@ export class Graph implements OnInit {
         this.updateImageUrl();
     }
 
+    showLoadUrl(show: boolean) {
+        this.showLoad = show;
+        if (show) {
+            // wait for element be be visible, then set focus:
+            setTimeout(() => {
+                this.urlInputElement.nativeElement.focus();
+                this.urlInputElement.nativeElement.select();
+            }, 10);
+        }
+    }
+
     get fileType() {
         return this._fileType;
     }
@@ -78,8 +90,8 @@ export class Graph implements OnInit {
     load() {
         let query = this.loadUrl.split('?')[1];
         this.graphDescription = decodeURIComponent(query).replace(new RegExp(';', 'g'), '\n');
-        this.showLoad = false;
         this.loadUrl = null;
+        this.showLoadUrl(false);
     }
 
     ngOnInit() {
