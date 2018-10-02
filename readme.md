@@ -12,7 +12,7 @@ The app will automatically reload if you change any of the source files.
 
 Stack
 ==
-- Angular2
+- Angular
 - http://www.gravizo.com/
 
 Deploy
@@ -41,4 +41,5 @@ TODO
 - convenience features:
   - ~~save image~~
   - insert templates
+  - markdown export: image + edit link
   - ...

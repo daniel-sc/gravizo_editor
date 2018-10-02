@@ -7,12 +7,12 @@ import {
     routing,
     appRoutingProviders
 } from './app.routing';
-import {Graph} from './graph/graph.component';
+import {GraphComponent} from './graph/graph.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     declarations: [
-        Graph,
+        GraphComponent,
     ],
     imports: [
         NgbModule.forRoot(),
@@ -22,7 +22,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
         routing
     ],
     providers: [appRoutingProviders],
-    bootstrap: [Graph]
+    bootstrap: [GraphComponent]
 })
 export class AppModule {
 }

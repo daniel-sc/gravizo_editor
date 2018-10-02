@@ -1,9 +1,9 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {Graph} from "./graph/graph.component";
+import {GraphComponent} from "./graph/graph.component";
 
 const appRoutes: Routes = [
-  { path: '', component: Graph }
+  { path: '', component: GraphComponent }
 ];
 
 export const appRoutingProviders: any[] = [

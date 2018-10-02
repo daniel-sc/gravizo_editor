@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-12 col-lg-6">
-            <textarea title="Graph description" [formControl]="graphBox" [(ngModel)]="graphDescription"
+            <textarea title="Graph description" [formControl]="graphBox"
                       spellcheck="false" autocomplete="off" class="w-100" rows="10"> </textarea>
             <br>
 
@@ -19,16 +19,15 @@
                     <span class="fa fa-download"></span>
                     Image
                 </a>
-                <select name="fileType" class="custom-select" [(ngModel)]="fileType">
+                <select name="fileType" class="custom-select" [formControl]="imageType">
                     <option value="svg">SVG</option>
                     <option value="g">PNG</option>
                 </select>
 
-                <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="originalSize" [(ngModel)]="originalSize" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">Original size</span>
-                </label>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" id="originalSize" name="originalSize" [(ngModel)]="originalSize" class="custom-control-input">
+                  <label class="custom-control-label" for="originalSize">Original size</label>
+                </div>
 
                 <input *ngIf="showLoad" class="form-control" [(ngModel)]="loadUrl" name="imageUrl" type="text"
                        placeholder="input image url.." #urlInput>
